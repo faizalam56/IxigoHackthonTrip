@@ -9,6 +9,7 @@ import android.util.Log;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.faiyaz.ixigohackthontrip.app.AppController;
 import com.example.faiyaz.ixigohackthontrip.model.PlaceFindToSearch;
 
 import org.json.JSONArray;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements SelectCityFragmen
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.main_menu,selectCityFragment,"selectcity");
             fragmentTransaction.commit();
+            selectCityFragment.setSubmitActionCommunicator(this);
         }
     }
 
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements SelectCityFragmen
                 for(int i=0;i<response.length();i++){
                     try{
                         JSONObject obj = response.getJSONObject(i);
+
                         PlaceFindToSearch placeFindToSearch = new PlaceFindToSearch();
                         placeFindToSearch.setText(obj.getString("text"));
                         placeFindToSearch.setUrl(obj.getString("url"));
@@ -64,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements SelectCityFragmen
 
             }
         });
+        // Adding request to request queue
+//        AppController.getInstance().addToRequestQueue(placesFind);
     }
 
     private void showProgressDialog(){

@@ -19,6 +19,7 @@ public class SelectCityFragment extends android.support.v4.app.Fragment {
     EditText cityName;
     Context context;
     Button button;
+    String cityname;
     SubmitActionCommunicator communicator;
     void setSubmitActionCommunicator(SubmitActionCommunicator communicator){
         this.communicator=communicator;
@@ -32,7 +33,7 @@ public class SelectCityFragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.selectcity_fragment,container,false);
+        View view = inflater.inflate(R.layout.selectcity_fragment, container, false);
 
          return view;
     }
@@ -41,15 +42,16 @@ public class SelectCityFragment extends android.support.v4.app.Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         cityName= (EditText) getActivity().findViewById(R.id.entercity_name);
-        final String cityname = cityName.getText().toString();
-
         button= (Button) getActivity().findViewById(R.id.submit_cityname);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cityname = cityName.getText().toString();
+                System.out.println("City "+cityname);
                 communicator.submitCityName(cityname);
             }
         });
+
     }
 
     interface SubmitActionCommunicator{
