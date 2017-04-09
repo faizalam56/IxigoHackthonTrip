@@ -1,9 +1,11 @@
 package com.example.faiyaz.ixigohackthontrip.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Faiyaz on 08-Apr-17.
  */
-public class PlaceFindToSearch {
+public class PlaceFindToSearch implements Serializable{
     private String text;
     private String url;
     private String ct;
@@ -18,13 +20,15 @@ public class PlaceFindToSearch {
     private String eid;
     private String cid;
     private String useNLP;
-    private String lat;
-    private String lon;
+//    private String lat;
+//    private String lon;
     private String xid;
+    private double lat;
+    private double lon;
 
     @Override
     public String toString() {
-        return "Text"+text+" ,"+"url "+url+" ,"+"ID "+_id+" ,"+"Latitude "+lat+" ,"+"Longitude "+lon;
+        return "Text"+text+" ,"+"url "+url+" ,"+"ID "+_id+" ,"+"Latitude "+ getLat() +" ,"+"Longitude "+ getLon();
     }
 
     public String getText() {
@@ -139,21 +143,21 @@ public class PlaceFindToSearch {
         this.useNLP = useNLP;
     }
 
-    public String getLat() {
-        return lat;
-    }
-
-    public void setLat(String lat) {
-        this.lat = lat;
-    }
-
-    public String getLon() {
-        return lon;
-    }
-
-    public void setLon(String lon) {
-        this.lon = lon;
-    }
+//    public String getLat() {
+//        return lat;
+//    }
+//
+//    public void setLat(String lat) {
+//        this.lat = lat;
+//    }
+//
+//    public String getLon() {
+//        return lon;
+//    }
+//
+//    public void setLon(String lon) {
+//        this.lon = lon;
+//    }
 
     public String getXid() {
         return xid;
@@ -161,5 +165,21 @@ public class PlaceFindToSearch {
 
     public void setXid(String xid) {
         this.xid = xid;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
     }
 }
